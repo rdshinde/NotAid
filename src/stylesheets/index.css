@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+:root {
+  --default-text-color: #221d23;
+  --defalult-bg-color: #f7f7f7;
+  --default-color: #1c4e56;
+  --primary-color: #368e9d;
+  --secondary-color: #c4c4c4;
+  --danger-color: #f44336;
+  --success-color: #4caf50;
+  --warning-color: #ffcc01;
+
+  --text-hover: #161316;
+  --default-hover: #13353a;
+  --primary-hover: #286a76;
+  --secondary-hover: #a8b0bd;
+  --danger-hover: #c41508;
+  --success-hover: #357937;
+  --warning-hover: #cca300;
+  --active-hover: #0047b3;
+
+  --off-white: #f6f9fc;
+  --active-color: #0065ff;
+
+  --dark-color: #221d23;
+  --light-color: #f4f4ed;
+
+  --shadow-color: #00000059;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.text-1,
+.text-2,
+.text-3,
+.text-4,
+.text-5 {
+  font-family: "Open Sans", sans-serif;
+}
+html {
+  font-size: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--defalult-bg-color);
+  box-sizing: border-box;
+}
+body * {
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+@media screen and (max-width: 960px) {
+  html {
+    font-size: 13px;
+  }
+}
