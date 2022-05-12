@@ -1,0 +1,58 @@
+.labels_dropdown {
+  background-color: #fff;
+  border: 1px solid var(--secondary-color);
+  min-width: 100%;
+  position: absolute;
+  right: 0rem;
+  top: 100%;
+  transform-origin: 0 0;
+  transform: scaleY(0);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s;
+  z-index: 10;
+}
+.show_labels_dropdown {
+  transform: scale(1);
+}
+.labels_dropdown ul li {
+  padding: var(--scale-sm) var(--scale-md);
+  text-align: center;
+  font-size: var(--scale-md);
+  font-weight: 600;
+}
+.labels_dropdown ul li:hover {
+  color: var(--primary-color);
+  transition: all 0.3s ease-in;
+}
+.labels_dropdown *:hover {
+  cursor: pointer;
+}
+.close_btn {
+  width: 100%;
+  margin-top: var(--scale-md) auto;
+  font-size: var(--scale-md);
+}
+.close_btn:hover {
+  background-color: var(--secondary-color);
+  opacity: 0.8;
+  transition: all 0.3s ease-in;
+}
+.create_label_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--scale-md);
+}
+.create_label_container input {
+  padding: var(--scale-sm);
+  border: 1px solid transparent;
+  outline: 1px solid transparent;
+  font-weight: 600;
+  margin-right: var(--scale-sm);
+  border-bottom: 1px solid var(--secondary-color);
+}
+.create_label_container button:hover {
+  background-color: var(--primary-color);
+  color: var(--off-white);
+  transition: all 0.3s ease-in;
+}
+

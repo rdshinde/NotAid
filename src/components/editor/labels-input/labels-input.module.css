@@ -1,0 +1,13 @@
+.add_labels_container {
+  align-items: center;
+  border-bottom: 1px solid var(--secondary-color);
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  position: relative;
+}
+.add_label_btn {
+  color: var(--secondary-color);
+  font-weight: 600;
+  text-transform: none;
+}

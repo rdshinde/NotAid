@@ -1,0 +1,25 @@
+.form_wrapper {
+  width: 60%;
+  margin: var(--scale-xl) auto;
+  background-color: #fff;
+}
+.auth_btns_container {
+  display: flex;
+  align-items: center;
+}
+.auth_btns_container * {
+  flex-grow: 1;
+  text-align: center;
+  color: var(--off-white);
+  font-size: var(--scale-lg);
+  text-transform: none;
+  padding: var(--scale-md);
+}
+.auth_btns_container *:hover {
+  text-decoration: none;
+}
+@media screen and (max-width: 960px) {
+  .form_wrapper{
+    width: 95%;
+  }
+}

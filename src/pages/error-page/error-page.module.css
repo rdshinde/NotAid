@@ -1,0 +1,25 @@
+.main_container {
+  height: 80vh;
+  padding: var(--scale-md) var(--scale-lg);
+  margin-right: var(--scale-lg);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.notes_container > h1,
+.notes_container > h2 {
+  margin: auto;
+  padding: var(--scale-md) 0;
+  color: var(--primary-color);
+}
+.home_btn:hover {
+  text-decoration: none;
+}
+@media screen and (max-width: 960px) {
+  .main_container {
+    margin: var(--scale-sm);
+    padding: var(--scale-sm);
+    height: min-content;
+    padding-bottom: 6rem;
+  }
+}

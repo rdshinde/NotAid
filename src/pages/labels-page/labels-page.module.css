@@ -1,0 +1,25 @@
+.main_container {
+  margin-left: 20rem;
+  height: 80vh;
+  padding: var(--scale-md) var(--scale-lg);
+  margin-right: var(--scale-lg);
+  display: flex;
+  flex-direction: column;
+}
+.label_name {
+  margin: auto;
+  padding: var(--scale-md) 0;
+  width: 60%;
+}
+@media screen and (max-width: 960px) {
+  .main_container {
+    margin: var(--scale-sm);
+    padding: var(--scale-sm);
+    height: min-content;
+    padding-bottom: 6rem;
+  }
+  .label_name,
+  .notes_container h3 {
+    width: 100%;
+  }
+}

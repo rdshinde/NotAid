@@ -1,0 +1,60 @@
+.note_wrapper {
+  width: 60%;
+  background-color: #fff;
+  margin: var(--scale-sm) auto;
+  padding: var(--scale-md);
+}
+.note_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--scale-sm);
+  cursor: default;
+}
+
+.note_body {
+  padding: var(--scale-lg) var(--scale-sm);
+  font-size: 1.2rem;
+}
+.note_footer {
+  padding: var(--scale-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.action_btns_container {
+  position: relative;
+}
+.action_btns_container span {
+  margin-left: var(--scale-lg);
+}
+.action_btns_container span:hover {
+  transition: all 0.3s ease-in 0.1s;
+  color: var(--primary-color);
+}
+.tags_container {
+  padding: var(--scale-sm) var(--scale-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--scale-md);
+  flex-wrap: wrap;
+}
+.note_priority {
+  cursor: default;
+}
+@media screen and (max-width: 960px) {
+  .note_wrapper {
+    width: 100%;
+    margin: var(--scale-sm) auto;
+    padding: var(--scale-sm);
+  }
+  .note_body{
+    font-size: 1rem;
+  }
+  .action_btns_container{
+    font-size: 13px;
+  }
+  .action_btns_container span{
+    margin-left: var(--scale-md);
+  }
+}

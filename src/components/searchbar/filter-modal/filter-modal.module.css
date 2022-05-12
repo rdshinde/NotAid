@@ -1,0 +1,45 @@
+.modal_wrapper {
+  background-color: #fff;
+  border: 1px solid var(--secondary-color);
+  margin-top: var(--scale-md);
+  min-width: 15rem;
+  padding: var(--scale-md);
+  position: absolute;
+  left: -15.07rem;
+  top: 100%;
+  transform-origin: 0 0;
+  transform: scaleY(0);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s;
+  z-index: 10;
+}
+.show_modal {
+  transform: scale(1);
+}
+.datepicker {
+  border: 1px solid var(--secondary-color);
+  font-size: var(--scale-md);
+  margin-top: var(--scale-sm);
+  outline: 1px solid transparent;
+  padding: var(--scale-sm);
+}
+.modal_wrapper label {
+  display: block;
+  font-size: var(--scale-md);
+  font-weight: 600;
+}
+.filterby_tags_container {
+  margin-top: var(--scale-sm);
+}
+input {
+  margin: var(--scale-sm) auto;
+  font-weight: normal;
+}
+.modal_wrapper p {
+  margin: var(--scale-sm) auto;
+  font-weight: 600;
+}
+.clear_filter_container {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

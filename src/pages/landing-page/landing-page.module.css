@@ -1,0 +1,80 @@
+.homepage_container {
+  display: flex;
+  gap: var(--scale-lg);
+  height: 100vh;
+  margin: auto;
+  padding: var(--scale-lg);
+}
+.hero_text_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--scale-lg);
+}
+.logo_container {
+  flex-grow: 1;
+  justify-self: flex-start;
+}
+.logo_container h1 {
+  font-size: 76px;
+}
+.hero_text {
+  flex-grow: 2;
+}
+.hero_description {
+  max-width: 40ch;
+}
+.logo_subtitle {
+  padding-left: 4px;
+}
+.hero_img_container {
+  padding: var(--scale-lg);
+}
+.hero_btn_container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--scale-md);
+  justify-content: flex-start;
+  padding: var(--scale-lg) 0;
+}
+.hero_btn {
+  background-color: var(--primary-color);
+  color: var(--off-white);
+  font-size: var(--scale-lg);
+  padding: var(--scale-md) var(--scale-lg);
+}
+.hero_btn:hover {
+  background-color: var(--primary-hover);
+  transition: all 0.3s ease-in-out 0.1s;
+  text-decoration: none;
+}
+
+.login_link {
+  padding-left: 0;
+}
+@media screen and (max-width: 960px) {
+  .homepage_container {
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .hero_text_container {
+    order: 2;
+  }
+  .logo_container {
+    position: fixed;
+    top: var(--scale-md);
+  }
+  .hero_img_container {
+    margin-top: var(--scale-xxl);
+    padding-top: var(--scale-xxl);
+  }
+}
+@media screen and (max-width: 560px) {
+  .homepage_container {
+    padding: var(--scale-sm);
+  }
+  .logo_container h1 {
+    font-size: 46px;
+  }
+}
