@@ -1,0 +1,12 @@
+.form input {
+  width: 100%;
+}
+label {
+  color: var(--secondary-hover);
+}
+.form {
+  padding: var(--scale-md);
+}
+.form > div {
+  padding: var(--scale-md);
+}

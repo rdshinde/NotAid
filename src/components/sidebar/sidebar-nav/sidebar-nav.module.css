@@ -1,0 +1,76 @@
+.sidebar_nav {
+  flex-grow: 1;
+}
+.sidebar_nav ul li {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: var(--scale-md) 0;
+  padding: var(--scale-md);
+  display: flex;
+  align-items: center;
+}
+.sidebar_nav ul li:hover {
+  background-color: var(--secondary-color);
+  font-weight: 600;
+  transition: all 0.3s ease-in 0.1s;
+}
+.sidebar_nav ul li span {
+  display: inline-block;
+  margin-right: var(--scale-md);
+}
+.create_note_btn {
+  background-color: var(--primary-color);
+  color: var(--off-white);
+  font-size: 1.3rem;
+  width: 100%;
+}
+.nav_link:hover {
+  text-decoration: none;
+}
+.active_link * {
+  color: var(--default-color);
+  font-weight: 700;
+}
+.floating_cta_btn {
+  position: fixed;
+  right: var(--scale-xxl);
+  bottom: 6rem;
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .sidebar_nav {
+    bottom: 0;
+    display: flex;
+    position: fixed;
+  }
+  .sidebar_nav ul {
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+  }
+  .sidebar_nav ul li {
+    margin: 0 0 var(--scale-sm) 0;
+  }
+  .floating_cta_btn {
+    bottom: 6rem;
+    display: block;
+    right: var(--scale-md);
+  }
+  .cta_btn_container {
+    display: none;
+  }
+}
+@media screen and (max-width: 780px) {
+  .sidebar_nav ul li {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    justify-content: center;
+    padding: var(--scale-sm);
+  }
+}

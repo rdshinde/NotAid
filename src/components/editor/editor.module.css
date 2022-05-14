@@ -1,0 +1,107 @@
+.editor_wrapper {
+  background-color: #fff;
+  border: 1px solid var(--secondary-color);
+  left: 23%;
+  padding: var(--scale-md) var(--scale-lg);
+  position: fixed;
+  top: 20%;
+  width: 70%;
+}
+.editor_header {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--scale-lg);
+  justify-content: space-between;
+  padding-right: var(--scale-lg);
+}
+.editor_title_input_container {
+  flex-grow: 1;
+}
+.editor_title_input_container input {
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--secondary-color);
+  font-weight: 600;
+  outline: 1px solid transparent;
+  padding: var(--scale-sm) var(--scale-md);
+  width: 100%;
+}
+.editor_title_input_container input::placeholder {
+  color: var(--secondary-color);
+}
+.close_editor {
+  padding: var(--scale-sm);
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.priority_input_container {
+  flex-grow: 1;
+  margin: 0;
+}
+.priority_input_container select {
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--secondary-color);
+  color: var(--default-text-color);
+  font-weight: 600;
+  outline: 1px solid transparent;
+  padding: var(--scale-sm);
+  width: 100%;
+  cursor: pointer;
+}
+.priority_input_container select:nth-child(1) {
+  color: var(--secondary-color);
+}
+
+.react_quill_container {
+  margin: var(--scale-md) auto;
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+.add_color_container {
+  display: inline-block;
+  padding: var(--scale-md);
+  position: relative;
+  text-align: center;
+}
+.add_color_container span {
+  margin-left: 0;
+}
+.color_picker_btn {
+  cursor: pointer;
+}
+.note_cta_btns_container {
+  align-items: center;
+  display: flex;
+  gap: var(--scale-lg);
+  justify-content: center;
+}
+.save_btn {
+  background-color: var(--primary-color);
+  color: var(--off-white);
+  font-size: 1.2rem;
+  padding: var(--scale-sm) var(--scale-md);
+  text-transform: none;
+}
+.save_btn:hover {
+  background-color: var(--primary-hover);
+  transition: all 0.3s ease-in;
+}
+.close_btn {
+  background-color: var(--secondary-color);
+  color: var(--off-white);
+  font-size: 1.2rem;
+  padding: var(--scale-sm) var(--scale-md);
+  text-transform: none;
+}
+.close_btn:hover {
+  background-color: var(--secondary-hover);
+  transition: all 0.3s ease-in;
+}
+.labels_container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--scale-lg);
+  margin: var(--scale-md) auto;
+}

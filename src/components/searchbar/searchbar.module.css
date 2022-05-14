@@ -1,0 +1,24 @@
+.searchbar_wrapper {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid var(--secondary-color);
+  display: flex;
+  height: var(--scale-md);
+  justify-content: space-between;
+  margin: var(--scale-sm) auto;
+  min-width: 15rem;
+  padding: var(--scale-md);
+  width: 60%;
+}
+.search_input[type="search"] {
+  border: 1px solid transparent;
+  outline: 1px solid transparent;
+}
+.filter_icon_container {
+  position: relative;
+}
+@media screen and (max-width: 960px) {
+  .searchbar_wrapper {
+    width: 100%;
+  }
+}

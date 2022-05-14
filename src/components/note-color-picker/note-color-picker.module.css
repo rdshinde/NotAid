@@ -1,0 +1,30 @@
+.color_picker {
+  background-color: #fff;
+  border: 1px solid var(--secondary-color);
+  margin-top: var(--scale-md);
+  min-width: 15rem;
+  padding: var(--scale-sm);
+  position: absolute;
+  left: 0rem;
+  top: 100%;
+  transform-origin: 0 0;
+  transform: scaleY(0);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s;
+  padding-top: var(--scale-lg);
+  z-index: 10;
+}
+.show_color_picker {
+  transform: scale(1);
+}
+.close_color_picker_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+@media screen and (max-width: 960px) {
+  .color_picker {
+    left: -150%;
+    top: 100%;
+  }
+}
