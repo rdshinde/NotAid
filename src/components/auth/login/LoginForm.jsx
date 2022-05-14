@@ -1,5 +1,6 @@
 import styles from "./login-form.module.css";
 import { useState } from "react";
+import { useAuth } from "../../../contexts";
 
 export const LoginForm = () => {
   const [showPwd, setShowPwd] = useState(false);
@@ -7,12 +8,32 @@ export const LoginForm = () => {
     email: "",
     password: "",
   });
+  const { isLoaderLoading, loginHandler } = useAuth();
+  const loginSubmitHandler = (e) => {
+    e.preventDefault();
+    loginHandler(loginCredentials);
+    setLoginCredentials({ email: "", password: "" });
+  };
   return (
     <>
-      <form className={`text-start ${styles.form}`}>
+      <form
+        className={`text-start ${styles.form}`}
+        onSubmit={(e) => loginSubmitHandler(e)}
+      >
         <div className={`${styles.input_group} required `} success-message="">
           <label htmlFor="email-id"> Email </label>
-          <input type="email" id="email-id" required />
+          <input
+            type="email"
+            id="email-id"
+            required
+            value={loginCredentials.email}
+            onChange={(e) =>
+              setLoginCredentials((prev) => ({
+                ...prev,
+                email: e.target.value,
+              }))
+            }
+          />
         </div>
         <div
           className={`${styles.input_group} required`}
@@ -25,6 +46,13 @@ export const LoginForm = () => {
               type={`${showPwd ? "text" : "password"}`}
               id="confirm-password"
               required
+              value={loginCredentials.password}
+              onChange={(e) =>
+                setLoginCredentials((prev) => ({
+                  ...prev,
+                  password: e.target.value,
+                }))
+              }
             />
             <div
               className={`${styles.show_pwd} centered`}
@@ -52,8 +80,8 @@ export const LoginForm = () => {
             onClick={(e) => {
               e.stopPropagation();
               setLoginCredentials({
-                email: "test@gmail.com",
-                password: "Test@123",
+                email: "rd@gmail.com",
+                password: "rd123",
               });
             }}
           >

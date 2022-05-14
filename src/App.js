@@ -10,10 +10,12 @@ import {
   ProfilePage,
   TrashPage,
 } from "./pages";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/auth/login" element={<AuthPage />} />
