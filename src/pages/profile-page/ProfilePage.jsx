@@ -3,21 +3,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { SetDocumentTitle } from "../../services/set-title/SetDocumentTitle";
 import { Header, Sidebar } from "../../components";
+import Jdenticon from "react-jdenticon";
+import { useAuth } from "../../contexts/auth/AuthProvider";
 
 export const ProfilePage = () => {
   SetDocumentTitle("NotAid | Profile");
+  const { userAuthState, logoutHandler } = useAuth();
   return (
     <>
       <Header />
       <Sidebar />
       <div className={styles.main_container}>
         <section className={styles.notes_container}>
-          <img
-            src="https://bermuda-css.netlify.app/assets/avatar.png"
-            className="avatar-lg"
-            alt=""
+          <Jdenticon
+            size="56"
+            value={`${userAuthState?.user?.firstName} ${userAuthState?.user?.lastName}`}
           />
-          <h1>Hello Rishikesh,</h1>
+          <h1>
+            {`${userAuthState?.user?.firstName} ${userAuthState?.user?.lastName}`}
+            ,
+          </h1>
           <div className={`m-t-md p-md`}>
             <Link
               to={`/home`}
@@ -25,7 +30,10 @@ export const ProfilePage = () => {
             >
               Back to Home
             </Link>
-            <button className={`${styles.logout_btn} btn btn-danger m-md`}>
+            <button
+              className={`${styles.logout_btn} btn btn-danger m-md`}
+              onClick={() => logoutHandler(userAuthState?.user?.firstName)}
+            >
               Logout
             </button>
           </div>

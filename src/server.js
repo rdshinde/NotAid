@@ -15,7 +15,7 @@ import {
   getAllNotesHandler,
   updateNoteHandler,
 } from "./backend/controllers/NotesController";
-import { restoreFromTrashHandler } from "backend/controllers/TrashController";
+import { restoreFromTrashHandler } from "./backend/controllers/TrashController";
 import { users } from "./backend/db/users";
 
 export function makeServer({ environment = "development" } = {}) {

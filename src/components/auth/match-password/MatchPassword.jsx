@@ -20,10 +20,21 @@ export const MatchPassword = ({ data: { getPassword, value } }) => {
     }
   }, [passwordState.pwd]);
 
+  useEffect(() => {
+    if (!value) {
+      setPasswordState((prev) => ({
+        ...prev,
+        pwd: { initialPwd: value, confirmedPwd: value },
+      }));
+    }
+  }, [value]);
+
   return (
     <div className={`text-start`}>
       <div
-        className={`${styles.input_group} m-b-lg required ${initialPwd && "success"}`}
+        className={`${styles.input_group} m-b-lg required ${
+          initialPwd && "success"
+        }`}
         success-message={`${initialPwd && "All looks good!"}`}
       >
         <label htmlFor="password">Password</label>
