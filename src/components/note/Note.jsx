@@ -49,7 +49,7 @@ export const Note = ({
             className={`${styles.note_priority} ${
               priority === "Basic"
                 ? "bg-success"
-                : priority === "Medium"
+                : priority === "Medium"|| "medium"
                 ? "bg-warning"
                 : "bg-danger"
             } text-offwhite text-4 bold-lg p-x-md text-center border-rounded-md`}
