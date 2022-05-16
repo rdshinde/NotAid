@@ -11,11 +11,17 @@ import {
   TrashPage,
 } from "./pages";
 import { ToastContainer } from "react-toastify";
+import { useEditor } from "./contexts/editor-provider/EditorProvider";
+import { Editor } from "./components";
 
 function App() {
+  const {
+    editorState: { isNoteEditorActive },
+  } = useEditor();
   return (
     <div className="App">
       <ToastContainer />
+      {isNoteEditorActive ? <Editor /> : ""}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/auth/login" element={<AuthPage />} />

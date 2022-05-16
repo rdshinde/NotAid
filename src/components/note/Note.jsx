@@ -7,15 +7,19 @@ import {
   VscSymbolColor,
   BsTrash,
   MdOutlineModeEditOutline,
-} from "../../services/icon-imports";
+} from "../../services";
 import { useColor } from "react-color-palette";
-import { textColorGetter } from "../../utils/helper-functions";
+import { textColorGetter } from "../../utils";
 import { NoteLabel } from "../note-label/NoteLabel";
 import { NoteColorPicker } from "../note-color-picker/NoteColorPicker";
 
-export const Note = () => {
+export const Note = ({
+  data: {
+    note: { title, body, cardColor, createdAt, labels, priority },
+  },
+}) => {
   const [isColorPicker, setColorPicker] = useState(false);
-  const [color, setColor] = useColor("hex", "#fff");
+  const [color, setColor] = useColor("hex", cardColor);
   const [backgroundcolor, setBackgroundColor] = useState({
     background: "fff",
     textColor: "black",
@@ -29,6 +33,7 @@ export const Note = () => {
       textColor: textColor,
     }));
   }, [color]);
+
   return (
     <article
       className={`${styles.note_wrapper}`}
@@ -39,30 +44,36 @@ export const Note = () => {
     >
       <section className={styles.note_header}>
         <div className={`flex-center gap-md`}>
-          <h3>Note Title</h3>
+          <h3>{title}</h3>
           <div
-            className={`${styles.note_priority} bg-warning text-offwhite text-4 bold-lg p-x-md text-center border-rounded-md`}
+            className={`${styles.note_priority} ${
+              priority === "Basic"
+                ? "bg-success"
+                : priority === "Medium"
+                ? "bg-warning"
+                : "bg-danger"
+            } text-offwhite text-4 bold-lg p-x-md text-center border-rounded-md`}
           >
-            <span title="Priority - Medium">Medium</span>
+            <span title={`Priority - ${priority}`}>{priority}</span>
           </div>
         </div>
         <div>
           <BsPin title="Pin" />
         </div>
       </section>
-      <section className={styles.note_body}>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi
-          voluptates quos totam incidunt illo libero necessitatibus expedita qui
-        </p>
-      </section>
+      <section
+        className={`${styles.note_body}`}
+        dangerouslySetInnerHTML={{ __html: body }}
+      ></section>
       <section className={styles.tags_container}>
-        <NoteLabel data={{ labelName: "Work" }} />
+        {labels?.map((label, index) => {
+          return <NoteLabel key={index} data={{ labelName: label }} />;
+        })}
       </section>
       <section className={styles.note_footer}>
         <div className={styles.date_container}>
           <span className="text-4">Created At </span>
-          <span className="bold-lg">01/01/2022</span>
+          <span className="bold-lg">{createdAt}</span>
         </div>
         <div className={`${styles.action_btns_container} text-3`}>
           <span>
