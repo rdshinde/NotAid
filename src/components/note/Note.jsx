@@ -1,4 +1,5 @@
 import styles from "./note.module.css";
+
 import { useState, useEffect } from "react";
 import {
   BsPin,
@@ -9,11 +10,10 @@ import {
   MdOutlineRestore,
 } from "../../services/icon-imports";
 import { useColor } from "react-color-palette";
-import { textColorGetter, isNoteInList } from "../../utils";
+import { textColorGetter, isNoteInList } from "../../utils/helper-functions";
 import { NoteLabel } from "../note-label/NoteLabel";
 import { NoteColorPicker } from "../note-color-picker/NoteColorPicker";
 import { useNotes, useEditor } from "../../contexts";
-
 export const Note = ({
   data: {
     note,
