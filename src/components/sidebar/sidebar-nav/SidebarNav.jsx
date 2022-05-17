@@ -9,12 +9,18 @@ import {
   BsTrash,
   CgProfile,
   IoMdAdd,
-} from "../../../services/icon-imports";
+} from "../../../services";
+import { useEditor } from "../../../contexts";
 export const SidebarNav = () => {
   const isLinkActive = ({ isActive }) => {
     return isActive
       ? `${styles.nav_link} ${styles.active_link}`
       : `${styles.nav_link}`;
+  };
+  const { editorState, editorDispatch } = useEditor();
+  const newNoteHandler = (e) => {
+    e.stopPropagation();
+    editorDispatch({ type: "OPEN_EDITOR" });
   };
   return (
     <nav className={styles.sidebar_nav}>
@@ -63,12 +69,14 @@ export const SidebarNav = () => {
       <div className={styles.cta_btn_container}>
         <button
           className={`${styles.create_note_btn} btn flex-center gap-md text-offwhite`}
+          onClick={(e) => newNoteHandler(e)}
         >
           <span>Add New Note</span>
         </button>
       </div>
       <div
         className={`${styles.floating_cta_btn} p-md bg-primary text-offwhite border-rounded-full flex-center`}
+        onClick={(e) => newNoteHandler(e)}
       >
         <IoMdAdd title={`Add New Note`} className="text-offwhite" />
       </div>

@@ -2,10 +2,11 @@ import styles from "./labels-input.module.css";
 import { useState } from "react";
 import { BsChevronUp, BsChevronDown } from "../../../services/icon-imports";
 import { LabelDropdown } from "../label-dropdown/LabelDropdown";
+import { useNotes } from "../../../contexts/notes-provider/NotesProvider";
 
 export const LabelsInput = () => {
   const [isLabelDropdown, setLabelDropdown] = useState(false);
-
+  const { labels } = useNotes();
   return (
     <div className={`${styles.add_labels_container}`}>
       <button

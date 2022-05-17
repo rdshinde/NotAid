@@ -1,14 +1,16 @@
 import styles from "./editor.module.css";
-import { IoMdClose, VscSymbolColor } from "../../services/icon-imports";
+import { IoMdClose, VscSymbolColor } from "../../services";
 import { useState, useEffect } from "react";
 import { ReactQuillEditor } from "./react-quil-editor/ReactQuillEditor";
 import { NoteColorPicker } from "../note-color-picker/NoteColorPicker";
 import { useColor } from "react-color-palette";
-import { textColorGetter } from "../../utils/helper-functions";
+import { textColorGetter, Toast } from "../../utils";
 import { NoteLabel } from "../note-label/NoteLabel";
 import { LabelsInput } from "./labels-input/LabelsInput";
+import { useEditor, useNotes } from "../../contexts";
 
 export const Editor = () => {
+  const { notesApiDispatch } = useNotes();
   const [editorText, setEditorText] = useState(``);
   const [isColorPicker, setColorPicker] = useState(false);
   const [color, setColor] = useColor("hex", "#fff");
@@ -17,6 +19,7 @@ export const Editor = () => {
     textColor: "black",
   });
   const getContrastYIQ = textColorGetter();
+
   useEffect(() => {
     let textColor = getContrastYIQ(color.hex);
     setBackgroundColor((prev) => ({
@@ -25,11 +28,60 @@ export const Editor = () => {
       textColor: textColor,
     }));
   }, [color]);
+  const {
+    editorDispatch,
+    editorState,
+    editorState: {
+      editor: { labels },
+    },
+  } = useEditor();
+  useEffect(() => {
+    editorDispatch({
+      type: "ADD_BODY",
+      payload: editorText,
+    });
+  }, [editorText]);
 
+  useEffect(() => {
+    editorDispatch({
+      type: "SET_CARD_COLOR",
+      payload: backgroundcolor.background,
+    });
+    editorDispatch({
+      type: "SET_CREATED_AT",
+      payload: `${
+        new Date().getFullYear() +
+        "-" +
+        (new Date().getMonth() + 1) +
+        "-" +
+        new Date().getDate()
+      }`,
+    });
+  }, [backgroundcolor]);
+  useEffect(() => {
+    editorDispatch({
+      type: "RESET_EDITOR",
+    });
+  }, []);
+  const editorSubmitHandler = (e) => {
+    e.stopPropagation();
+    if (editorState.editor.title && editorState.editor.body) {
+      notesApiDispatch({
+        type: "ADD_NEW_NOTE",
+        payload: { ...editorState.editor },
+      });
+      editorDispatch({ type: "CLOSE_EDITOR" });
+    } else {
+      Toast({ type: "warning", msg: "Note's title and body is required!" });
+    }
+  };
   return (
     <div className={`${styles.editor_wrapper} shadow-md centered`}>
       <div className={`${styles.close_editor} text-3`}>
-        <IoMdClose title="Close" />
+        <IoMdClose
+          title="Close"
+          onClick={() => editorDispatch({ type: "CLOSE_EDITOR" })}
+        />
       </div>
       <section className={`${styles.editor_header}`}>
         <div className={`${styles.editor_title_input_container}`}>
@@ -38,10 +90,20 @@ export const Editor = () => {
             placeholder="Add Title"
             autoFocus
             className="text-3"
+            onChange={(e) =>
+              editorDispatch({ type: "ADD_TITLE", payload: e.target.value })
+            }
           />
         </div>
         <div className={`${styles.priority_input_container} `}>
-          <select name="priority" id="priority" className="text-3">
+          <select
+            name="priority"
+            id="priority"
+            className="text-3"
+            onChange={(e) =>
+              editorDispatch({ type: "SET_PRIORITY", payload: e.target.value })
+            }
+          >
             <option value="select-priority" defaultValue={true} disabled>
               Add Priority
             </option>
@@ -58,7 +120,9 @@ export const Editor = () => {
         />
       </section>
       <section className={styles.labels_container}>
-        <NoteLabel data={{ labelName: "Work" }} />
+        {labels.map((label, index) => {
+          return <NoteLabel key={index} data={{ labelName: label }} />;
+        })}
       </section>
       <section
         className={`${styles.add_color_container}`}
@@ -89,6 +153,7 @@ export const Editor = () => {
           type="button"
           title="Close"
           className={`${styles.close_btn} btn`}
+          onClick={() => editorDispatch({ type: "CLOSE_EDITOR" })}
         >
           Close
         </button>
@@ -96,6 +161,7 @@ export const Editor = () => {
           type="submit"
           title="Save Note"
           className={`${styles.save_btn} btn`}
+          onClick={(e) => editorSubmitHandler(e)}
         >
           Save
         </button>

@@ -6,6 +6,7 @@
   position: fixed;
   top: 20%;
   width: 70%;
+  z-index: 12;
 }
 .editor_header {
   align-items: center;
@@ -18,7 +19,7 @@
 .editor_title_input_container {
   flex-grow: 1;
 }
-.editor_title_input_container input {
+.editor_title_input_container input[type="text"] {
   border: 1px solid transparent;
   border-bottom: 1px solid var(--secondary-color);
   font-weight: 600;

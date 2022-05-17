@@ -1,10 +1,10 @@
 import styles from "./homepage.module.css";
-import React from "react";
 import { Header, Note, SearchBar, Sidebar } from "../../components";
-import { SetDocumentTitle } from "../../services/set-title/SetDocumentTitle";
-
+import { SetDocumentTitle } from "../../services";
+import { useNotes } from "../../contexts";
 export const Homepage = () => {
   SetDocumentTitle("NotAid | Homepage");
+  const { notes } = useNotes();
   return (
     <>
       <Header />
@@ -13,7 +13,9 @@ export const Homepage = () => {
         <SearchBar />
         <div className={styles.notes_container}>
           <h3>All Notes</h3>
-          <Note />
+          {notes?.map((note) => {
+            return <Note data={{ note }} />;
+          })}
         </div>
       </div>
     </>

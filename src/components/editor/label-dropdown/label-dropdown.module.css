@@ -1,6 +1,7 @@
 .labels_dropdown {
   background-color: #fff;
   border: 1px solid var(--secondary-color);
+  width: 15rem;
   min-width: 100%;
   position: absolute;
   right: 0rem;
@@ -55,4 +56,3 @@
   color: var(--off-white);
   transition: all 0.3s ease-in;
 }
-
