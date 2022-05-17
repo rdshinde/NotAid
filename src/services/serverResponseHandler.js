@@ -23,7 +23,7 @@ const serverResponseHandler = (
       }
     }
   } else {
-    navigate(`/auth/login`);
+    navigate(`/`);
   }
 };
 export { serverResponseHandler };
