@@ -1,9 +1,14 @@
 import styles from "./labels-page.module.css";
 import React from "react";
 import { SearchBar, Note, Header, Sidebar } from "../../components";
-import { SetDocumentTitle } from "../../services/set-title/SetDocumentTitle";
+import { SetDocumentTitle } from "../../services";
+import { useNotes } from "../../contexts";
+import { getAllLabels } from "../../utils";
 export const LabelsPage = () => {
   SetDocumentTitle("NotAid | Labels");
+  const { notes } = useNotes();
+
+  const labels = getAllLabels(notes);
   return (
     <>
       <Header />
@@ -11,24 +16,20 @@ export const LabelsPage = () => {
       <div className={styles.main_container}>
         <SearchBar />
         <div className={styles.notes_container}>
-          <section>
-            <div className={styles.label_name}>
-              <h4>Label 1</h4>
-            </div>
-            <Note />
-          </section>
-          <section>
-            <div className={styles.label_name}>
-              <h4>Label 2</h4>
-            </div>
-            <Note />
-          </section>
-          <section>
-            <div className={styles.label_name}>
-              <h4>Label 2</h4>
-            </div>
-            <Note />
-          </section>
+          {labels.map((label, index) => {
+            return (
+              <section key={index}>
+                <div className={`${styles.label_name} text-default`}>
+                  <h3>{label}</h3>
+                </div>
+                {notes.map((note) => {
+                  if (note.labels.some((labelname) => labelname === label)) {
+                    return <Note key={note._id} data={{ note }} />;
+                  }
+                })}
+              </section>
+            );
+          })}
         </div>
       </div>
     </>

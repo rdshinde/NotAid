@@ -19,7 +19,7 @@ const serverResponseHandler = (
       } else if (res?.data?.archives) {
         setArchives((prev) => [...res?.data?.archives]);
       } else if (res?.data?.trash) {
-        setTrash((prev) => [...res?.data?.archives]);
+        setTrash((prev) => [...res?.data?.trash]);
       }
     }
   } else {

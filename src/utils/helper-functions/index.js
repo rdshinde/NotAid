@@ -18,3 +18,20 @@ export const textColorGetter = () => {
     return yiq >= 128 ? "black" : "white";
   };
 };
+export const isNoteInList = (id, list) => {
+  return list.some((note) => note._id === id);
+};
+
+export const getAllLabels = (notes) => {
+  let allLabels = [];
+  let allUniqueLabels = [];
+  for (let note of notes) {
+    allLabels.push.apply(allLabels, note.labels);
+  }
+  for (let label of allLabels) {
+    if (allUniqueLabels.indexOf(label) === -1) {
+      allUniqueLabels.push(label);
+    }
+  }
+  return allUniqueLabels;
+};

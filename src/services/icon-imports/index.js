@@ -8,6 +8,7 @@ export {
   MdLabel,
   MdLabelOutline,
   MdOutlineModeEditOutline,
+  MdOutlineRestore,
 } from "react-icons/md";
 export { CgProfile } from "react-icons/cg";
 export { VscSymbolColor } from "react-icons/vsc";
