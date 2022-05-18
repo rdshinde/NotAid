@@ -1,5 +1,6 @@
 import styles from "./note.module.css";
-
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en.json";
 import { useState, useEffect } from "react";
 import {
   BsPin,
@@ -21,6 +22,9 @@ export const Note = ({
     note: { _id, title, body, cardColor, createdAt, labels, priority },
   },
 }) => {
+  TimeAgo.locale(en);
+  const timeAgo = new TimeAgo("en-US");
+
   const { notesApiDispatch, archives, trash } = useNotes();
   const { editorDispatch } = useEditor();
   const [isColorPicker, setColorPicker] = useState(false);
@@ -72,8 +76,10 @@ export const Note = ({
       </section>
       <section className={styles.note_footer}>
         <div className={styles.date_container}>
-          <span className="text-4">Created At </span>
-          <span className="bold-lg">{createdAt}</span>
+          <span className="text-4">Created </span>
+          <span className="bold-lg">{`${timeAgo.format(
+            new Date(createdAt * 1000)
+          )}`}</span>
         </div>
         <div className={`${styles.action_btns_container} text-3`}>
           {isNoteInList(_id, archives) || isNoteInList(_id, trash) ? (

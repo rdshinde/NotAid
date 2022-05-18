@@ -4,7 +4,12 @@ import "./stylesheets/index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AuthProvider,EditorProvider, NotesProvider } from "./contexts";
+import {
+  AuthProvider,
+  EditorProvider,
+  FilterProvider,
+  NotesProvider,
+} from "./contexts";
 makeServer();
 
 ReactDOM.render(
@@ -12,9 +17,11 @@ ReactDOM.render(
     <Router>
       <AuthProvider>
         <NotesProvider>
-          <EditorProvider>
-            <App />
-          </EditorProvider>
+          <FilterProvider>
+            <EditorProvider>
+              <App />
+            </EditorProvider>
+          </FilterProvider>
         </NotesProvider>
       </AuthProvider>
     </Router>

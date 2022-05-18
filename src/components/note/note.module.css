@@ -46,7 +46,7 @@
   font-weight: 600;
 }
 .note_body {
-  padding: var(--scale-md) var(--scale-lg);
+  padding: var(--scale-md) var(--scale-sm);
 }
 .note_body em {
   font-style: italic;

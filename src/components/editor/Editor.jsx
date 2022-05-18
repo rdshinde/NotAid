@@ -49,13 +49,7 @@ export const Editor = () => {
     });
     editorDispatch({
       type: "SET_CREATED_AT",
-      payload: `${
-        new Date().getFullYear() +
-        "-" +
-        (new Date().getMonth() + 1) +
-        "-" +
-        new Date().getDate()
-      }`,
+      payload: Math.floor(Date.now() / 1000),
     });
   }, [backgroundcolor]);
   useEffect(() => {
