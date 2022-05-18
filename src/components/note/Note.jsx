@@ -29,8 +29,9 @@ export const Note = ({
   const { editorDispatch } = useEditor();
   const [isColorPicker, setColorPicker] = useState(false);
   const [color, setColor] = useColor("hex", cardColor);
+
   const [backgroundcolor, setBackgroundColor] = useState({
-    background: "fff",
+    background: color.hex,
     textColor: "black",
   });
   const getContrastYIQ = textColorGetter();
@@ -42,7 +43,14 @@ export const Note = ({
       textColor: textColor,
     }));
   }, [color]);
-
+  useEffect(() => {
+    let textColor = getContrastYIQ(cardColor);
+    setBackgroundColor((prev) => ({
+      ...prev,
+      background: cardColor,
+      textColor: textColor,
+    }));
+  }, [cardColor]);
   return (
     <article
       className={`${styles.note_wrapper}`}
