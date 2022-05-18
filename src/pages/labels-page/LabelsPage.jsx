@@ -1,6 +1,5 @@
 import styles from "./labels-page.module.css";
-import React from "react";
-import { SearchBar, Note, Header, Sidebar } from "../../components";
+import { Note, Header, Sidebar } from "../../components";
 import { SetDocumentTitle } from "../../services";
 import { useNotes } from "../../contexts";
 import { getAllLabels } from "../../utils";
@@ -14,7 +13,7 @@ export const LabelsPage = () => {
       <Header />
       <Sidebar />
       <div className={styles.main_container}>
-        <SearchBar />
+       
         <div className={styles.notes_container}>
           {labels.map((label, index) => {
             return (

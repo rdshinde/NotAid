@@ -1,5 +1,4 @@
 import styles from "./filter-modal.module.css";
-import { useState } from "react";
 import { useNotes, useFilter } from "../../../contexts";
 import { getAllLabels } from "../../../utils";
 
@@ -26,6 +25,7 @@ export const FilterModal = ({ data: { showModal, setModalState } }) => {
             Clear Filters
           </button>
         </div>
+
         <p className="p-t-md"> Sort By Date</p>
         <div className={`${styles.label} m-t-md`}>
           <label htmlFor="Oldest">Oldest</label>

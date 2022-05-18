@@ -1,6 +1,5 @@
 import styles from "./trash-page.module.css";
-import React from "react";
-import { SearchBar, Note, Header, Sidebar } from "../../components";
+import { Note, Header, Sidebar } from "../../components";
 import { SetDocumentTitle } from "../../services";
 import { useNotes } from "../../contexts";
 export const TrashPage = () => {
@@ -11,7 +10,6 @@ export const TrashPage = () => {
       <Header />
       <Sidebar />
       <div className={styles.main_container}>
-        <SearchBar />
         <section className={`${styles.notes_container} text-default`}>
           <h3>Trash</h3>
           {trash?.map((note) => {
