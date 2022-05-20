@@ -74,6 +74,7 @@ const NotesProvider = ({ children }) => {
         notesApiData,
         notesApiDispatch,
         notes,
+        setNotes,
         archives,
         labels,
         setlabels,

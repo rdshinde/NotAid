@@ -13,7 +13,6 @@ export const LabelsPage = () => {
       <Header />
       <Sidebar />
       <div className={styles.main_container}>
-       
         <div className={styles.notes_container}>
           {labels.map((label, index) => {
             return (
@@ -30,6 +29,13 @@ export const LabelsPage = () => {
             );
           })}
         </div>
+        {labels.length < 1 ? (
+          <h2 className="text-center p-lg text-warning">
+            Your notes don't have any labels!
+          </h2>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

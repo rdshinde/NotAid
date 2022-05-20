@@ -16,6 +16,13 @@ export const TrashPage = () => {
             return <Note key={note._id} data={{ note }} />;
           })}
         </section>
+        {trash.length < 1 ? (
+          <h2 className="text-center p-lg text-warning">
+            Your trash is empty!
+          </h2>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

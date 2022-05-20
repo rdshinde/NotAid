@@ -9,6 +9,7 @@ const initialValue = {
     labels: [],
     createdAt: "",
     cardColor: "white",
+    isPinned: false,
   },
 };
 
