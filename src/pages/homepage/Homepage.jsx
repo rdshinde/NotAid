@@ -46,6 +46,13 @@ export const Homepage = () => {
             </div>
           </section>
         )}
+        {notes.length < 1 ? (
+          <h2 className="text-center p-lg text-warning">
+            You have no notes. Please add notes.
+          </h2>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

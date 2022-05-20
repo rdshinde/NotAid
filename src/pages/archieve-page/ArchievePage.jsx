@@ -16,6 +16,13 @@ export const ArchievePage = () => {
             return <Note key={note._id} data={{ note }} />;
           })}
         </section>
+        {archives.length < 1 ? (
+          <h2 className="text-center p-lg text-warning">
+            You have no archived notes!
+          </h2>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
