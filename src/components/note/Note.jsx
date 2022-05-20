@@ -4,28 +4,39 @@ import en from "javascript-time-ago/locale/en.json";
 import { useState, useEffect } from "react";
 import {
   BsPin,
+  BsFillPinFill,
   BsArchive,
   VscSymbolColor,
   BsTrash,
   MdOutlineModeEditOutline,
   MdOutlineRestore,
-} from "../../services/icon-imports";
+  notePinHandler,
+} from "../../services";
 import { useColor } from "react-color-palette";
 import { textColorGetter, isNoteInList } from "../../utils/helper-functions";
 import { NoteLabel } from "../note-label/NoteLabel";
 import { NoteColorPicker } from "../note-color-picker/NoteColorPicker";
 import { useNotes, useEditor } from "../../contexts";
+
 export const Note = ({
   data: {
     note,
-
-    note: { _id, title, body, cardColor, createdAt, labels, priority },
+    note: {
+      _id,
+      title,
+      body,
+      cardColor,
+      createdAt,
+      labels,
+      priority,
+      isPinned,
+    },
   },
 }) => {
   TimeAgo.locale(en);
   const timeAgo = new TimeAgo("en-US");
 
-  const { notesApiDispatch, archives, trash } = useNotes();
+  const { notesApiDispatch, archives, trash, setNotes } = useNotes();
   const { editorDispatch } = useEditor();
   const [isColorPicker, setColorPicker] = useState(false);
   const [color, setColor] = useColor("hex", cardColor);
@@ -51,6 +62,11 @@ export const Note = ({
       textColor: textColor,
     }));
   }, [cardColor]);
+
+  const pinHandler = () => {
+    notePinHandler(note, setNotes);
+  };
+
   return (
     <article
       className={`${styles.note_wrapper}`}
@@ -70,7 +86,11 @@ export const Note = ({
           </div>
         </div>
         <div>
-          <BsPin title="Pin" />
+          {isPinned ? (
+            <BsFillPinFill title="Remove From Pinned" onClick={pinHandler} />
+          ) : (
+            <BsPin title="Pin" onClick={pinHandler} />
+          )}
         </div>
       </section>
       <section

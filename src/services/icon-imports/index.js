@@ -25,5 +25,6 @@ export {
   BsTrash,
   BsTrashFill,
   BsPin,
+  BsFillPinFill,
   BsPinFill,
 } from "react-icons/bs";

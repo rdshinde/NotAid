@@ -7,6 +7,7 @@ export const Homepage = () => {
   const { notes } = useNotes();
   const { filteredNotes, filterState } = useFilter();
   const isFilterApplied = filterState?.isFilterApplied;
+  const isPinnedNotesAvailable = notes.some((note) => note.isPinned);
   return (
     <>
       <Header />
@@ -21,12 +22,29 @@ export const Homepage = () => {
             })}
           </div>
         ) : (
-          <div className={styles.notes_container}>
-            <h3>All Notes</h3>
-            {notes?.map((note) => {
-              return <Note data={{ note }} />;
-            })}
-          </div>
+          <section>
+            {isPinnedNotesAvailable ? (
+              <div className={styles.notes_container}>
+                <h3>Pinned Notes</h3>
+                {notes?.map((note) => {
+                  if (note.isPinned) {
+                    return <Note data={{ note }} />;
+                  }
+                })}
+              </div>
+            ) : (
+              ""
+            )}
+
+            <div className={styles.notes_container}>
+              <h3>All Notes</h3>
+              {notes?.map((note) => {
+                if (!note.isPinned) {
+                  return <Note data={{ note }} />;
+                }
+              })}
+            </div>
+          </section>
         )}
       </div>
     </>
