@@ -43,3 +43,17 @@ input {
   top: 0;
   right: 0;
 }
+.label{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: var(--scale-md);
+}
+.label label{
+  width: 40%;
+}
+.label input{
+max-width: 40%;
+margin:  var(--scale-sm) 0;
+}

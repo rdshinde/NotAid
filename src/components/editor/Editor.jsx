@@ -49,27 +49,35 @@ export const Editor = () => {
     });
     editorDispatch({
       type: "SET_CREATED_AT",
-      payload: `${
-        new Date().getFullYear() +
-        "-" +
-        (new Date().getMonth() + 1) +
-        "-" +
-        new Date().getDate()
-      }`,
+      payload: Math.floor(Date.now() / 1000),
     });
   }, [backgroundcolor]);
   useEffect(() => {
-    editorDispatch({
-      type: "RESET_EDITOR",
-    });
+    if (!editorState.isNoteEdit) {
+      editorDispatch({
+        type: "RESET_EDITOR",
+      });
+    } else {
+      setEditorText(editorState.editor.body);
+    }
   }, []);
   const editorSubmitHandler = (e) => {
     e.stopPropagation();
     if (editorState.editor.title && editorState.editor.body) {
-      notesApiDispatch({
-        type: "ADD_NEW_NOTE",
-        payload: { ...editorState.editor },
-      });
+      if (editorState.isNoteEdit) {
+        notesApiDispatch({
+          type: "EDIT_NOTE",
+          payload: {
+            note_id: editorState._id,
+            note: { ...editorState.editor },
+          },
+        });
+      } else {
+        notesApiDispatch({
+          type: "ADD_NEW_NOTE",
+          payload: { ...editorState.editor },
+        });
+      }
       editorDispatch({ type: "CLOSE_EDITOR" });
     } else {
       Toast({ type: "warning", msg: "Note's title and body is required!" });
@@ -90,6 +98,7 @@ export const Editor = () => {
             placeholder="Add Title"
             autoFocus
             className="text-3"
+            value={editorState?.editor?.title}
             onChange={(e) =>
               editorDispatch({ type: "ADD_TITLE", payload: e.target.value })
             }
@@ -100,6 +109,7 @@ export const Editor = () => {
             name="priority"
             id="priority"
             className="text-3"
+            value={editorState?.editor?.priority}
             onChange={(e) =>
               editorDispatch({ type: "SET_PRIORITY", payload: e.target.value })
             }
@@ -134,6 +144,10 @@ export const Editor = () => {
         <span
           className={`text-4 bold-lg ${styles.color_picker_btn}`}
           onClick={() => setColorPicker((prev) => !prev)}
+          style={{
+            backgroundColor: backgroundcolor.background,
+            color: backgroundcolor.textColor,
+          }}
         >
           <span className="m-x-md">Add BackgroundColor</span>
           <VscSymbolColor title="Add Background Color" />
@@ -163,7 +177,7 @@ export const Editor = () => {
           className={`${styles.save_btn} btn`}
           onClick={(e) => editorSubmitHandler(e)}
         >
-          Save
+          {editorState.isNoteEdit ? "Save Changes" : "Save"}
         </button>
       </section>
     </div>

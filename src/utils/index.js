@@ -1,2 +1,3 @@
 export { Toast } from "./toast";
-export { textColorGetter } from "./helper-functions/index";
+export * from "./helper-functions/index";
+export * from "./filterHandlers";

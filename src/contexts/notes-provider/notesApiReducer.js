@@ -105,7 +105,7 @@ const notesApiReducer = (state, { type, payload }) => {
       return {
         ...state,
         apiData: {
-          apiURL: `/api/trash/${payload.note_id}`,
+          apiURL: `/api/notes/trash/${payload.note_id}`,
           apiMethod: "POST",
           postData: {
             note: { ...payload.note },

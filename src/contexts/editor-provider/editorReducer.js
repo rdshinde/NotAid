@@ -21,6 +21,7 @@ const editorReducer = (state, { type, payload }) => {
       return {
         ...state,
         isNoteEditorActive: false,
+        isNoteEdit: false,
       };
     case "ADD_TITLE":
       return {
@@ -56,6 +57,8 @@ const editorReducer = (state, { type, payload }) => {
       return {
         ...state,
         isNoteEditorActive: true,
+        isNoteEdit: true,
+        _id: payload.Id,
         editor: {
           ...state.editor,
           title: payload.title,
