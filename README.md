@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>NotAid</h1>
+  <h1><a href="https://notaid.vercel.app"> NotAid </a></h1>
   
   
   The modern note taking app. 
