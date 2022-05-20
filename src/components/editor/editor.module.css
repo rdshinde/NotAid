@@ -106,3 +106,14 @@
   gap: var(--scale-lg);
   margin: var(--scale-md) auto;
 }
+@media screen and (max-width: 960px) {
+  .editor_wrapper {
+    left: 2.5%;
+    padding: var(--scale-sm) var(--scale-md);
+    width: 95%;
+    top: 10%;
+  }
+  .react_quill_container {
+    max-height: 100vh;
+  }
+}
