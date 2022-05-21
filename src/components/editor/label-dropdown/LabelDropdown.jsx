@@ -51,7 +51,7 @@ export const LabelDropdown = ({
       <ul>
         {labels?.map((label, index) => {
           return (
-            <li key={index} className={`flex-center gap-lg`}>
+            <li key={index} className={`grid-container col-2`}>
               <input
                 type="checkbox"
                 className={styles.checkbox_input}
@@ -60,9 +60,11 @@ export const LabelDropdown = ({
                 onChange={(e) => labelChangeHandler(e)}
                 checked={isLabelChecked(`${label}`)}
               />
-              <label htmlFor={label}>
-                <span className="p-x-md">{label}</span>
-              </label>
+              <div className={styles.label_container}>
+                <label htmlFor={label}>
+                  <span className="p-x-md flex-center">{label}</span>
+                </label>{" "}
+              </div>
             </li>
           );
         })}
