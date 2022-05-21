@@ -1,6 +1,6 @@
 .note_wrapper {
   width: 60%;
-  background-color: #fff;
+  background-color:var(--rich-white);
   margin: var(--scale-sm) auto;
   padding: var(--scale-md);
 }

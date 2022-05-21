@@ -1,5 +1,5 @@
 .header_wrapper {
-  background-color: #fff;
+  background-color:var(--rich-white);
   padding: var(--scale-md) var(--scale-lg);
   position: sticky;
   top: 0;

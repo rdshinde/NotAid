@@ -1,7 +1,7 @@
 .form_wrapper {
   width: 60%;
   margin: var(--scale-xl) auto;
-  background-color: #fff;
+  background-color:var(--rich-white);
 }
 .auth_btns_container {
   display: flex;

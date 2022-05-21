@@ -1,5 +1,5 @@
 .color_picker {
-  background-color: #fff;
+  background-color:var(--rich-white);
   border: 1px solid var(--secondary-color);
   margin-top: var(--scale-md);
   min-width: 15rem;

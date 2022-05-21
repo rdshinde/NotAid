@@ -26,7 +26,7 @@
 
 @media screen and (max-width: 960px) {
   .sidebar_wrapper {
-    background-color: #fff;
+    background-color:var(--rich-white);
     bottom: 0;
     min-height: var(--scale-xxl);
     padding: var(--scale-sm);

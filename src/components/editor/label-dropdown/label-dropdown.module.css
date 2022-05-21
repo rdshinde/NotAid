@@ -1,5 +1,5 @@
 .labels_dropdown {
-  background-color: #fff;
+  background-color:var(--rich-white);
   border: 1px solid var(--secondary-color);
   width: 15rem;
   min-width: 100%;
