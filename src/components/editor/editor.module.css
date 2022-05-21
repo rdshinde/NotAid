@@ -4,7 +4,9 @@
   left: 23%;
   padding: var(--scale-md) var(--scale-lg);
   position: fixed;
-  top: 20%;
+  top: 12%;
+  max-height: 80vh;
+  overflow-y: auto;
   width: 70%;
   z-index: 12;
 }
