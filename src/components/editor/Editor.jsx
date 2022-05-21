@@ -59,6 +59,10 @@ export const Editor = () => {
       });
     } else {
       setEditorText(editorState.editor.body);
+      setBackgroundColor((prev) => ({
+        ...prev,
+        background: editorState.editor.cardColor,
+      }));
     }
   }, []);
   const editorSubmitHandler = (e) => {
