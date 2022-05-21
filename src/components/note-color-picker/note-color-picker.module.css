@@ -24,7 +24,7 @@
 }
 @media screen and (max-width: 960px) {
   .color_picker {
-    left: -150%;
+    left: 0%;
     top: 100%;
   }
 }

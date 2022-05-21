@@ -42,8 +42,9 @@
   align-items: center;
   justify-content: center;
   padding: var(--scale-md);
+  gap: var(--scale-md);
 }
-.create_label_container input {
+.create_label_container input[type="text"] {
   padding: var(--scale-sm);
   border: 1px solid transparent;
   outline: 1px solid transparent;
